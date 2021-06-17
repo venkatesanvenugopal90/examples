@@ -55,9 +55,11 @@ Note: This would start the UI application and leave this prompt as it is. This w
 4. Anytime when UI application is running, Open any web browser (Recommended Chrome/Firefox) and go to http://localhost:4200/ to see application
 
 ## Notes/TODO
-1. Tests are not written for both ui & backend code
+1. Unit/Integration tests are not written for both ui & backend code
 2. Exception handling is not in place for both ui & backend code
 3. Advanced validations not in place for both ui and backend code
 4. User friendly messages or popup on UI not in place
 5. Java/UI documentations not in place
+6. Need to document production way of deploying the application
+7. Add person/address by uploading XML/JSON not in place
 

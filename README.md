@@ -39,14 +39,14 @@ TODO
 
 ### Start backend
 1. Open a shell prompt
-2. Go to "backend" under repository and run "mvn clean install"
-3. Run "java -jar target/backend-*.war"
+2. Go to `cd backend` under repository and run `mvn clean install`
+3. Run `java -jar target/backend-*.war`
 Note : This would start the backend sprintboot application and leave this prompt as it is and open new shell prompt to start UI
 
 ### Start UI
-1. Go to "ui" under repository directory
+1. Go to `cd ui` under repository directory
 2. Install angular cli if not already. Refer https://angular.io/guide/setup-local#install-the-angular-cli
-3. Run "ng serve --open". Refer https://angular.io/guide/setup-local#run-the-application
+3. Run `ng serve --open`. Refer https://angular.io/guide/setup-local#run-the-application
 Note: This would start the UI application and leave this prompt as it is. This will open http://localhost:4200/ on your default browser
 4. Anytime when UI application is running, Open any web browser (Recommended Chrome/Firefox) and go to http://localhost:4200/ to see application
 

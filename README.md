@@ -5,12 +5,16 @@ Small end to end application to interact with.
 
 ## Features
 1. Lists person
+![list_person](https://user-images.githubusercontent.com/86027537/122427618-2bf6dd00-cf89-11eb-902a-6fb67bdb9703.PNG)
 2. Able to add new person
+![add_person](https://user-images.githubusercontent.com/86027537/122427704-3e711680-cf89-11eb-8ded-f1bdda3c8e33.PNG)
 3. Able to edit an existing person
 4. Able to link existing address to a person
 5. Able to delete an existing person
 6. Lists address
+![list_address](https://user-images.githubusercontent.com/86027537/122427646-331deb00-cf89-11eb-8123-c072a67b573b.PNG)
 7. Able to add new address
+![add_address](https://user-images.githubusercontent.com/86027537/122427800-4fba2300-cf89-11eb-8da9-3e7a6c7ee9a8.PNG)
 8. Able to edit an existing address
 9. Able to delete an existing address (Can not delete if it is linked to an existing person)
 

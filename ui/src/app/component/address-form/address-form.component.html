@@ -1,0 +1,49 @@
+<div class="card my-5">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <form (ngSubmit)="onSubmit()" #addressForm="ngForm">
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" [(ngModel)]="address.street" 
+        class="form-control" 
+        id="street" 
+        name="street" 
+        placeholder="Enter your street"
+        required #street="ngModel">
+      </div>
+      <div [hidden]="!street.invalid" class="alert alert-danger">Street is required</div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" [(ngModel)]="address.city" 
+        class="form-control" 
+        id="city" 
+        name="city" 
+        placeholder="Enter your city"
+        required #city="ngModel">
+      </div>
+      <div [hidden]="!city.invalid" class="alert alert-danger">City is required</div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" [(ngModel)]="address.state" 
+        class="form-control" 
+        id="state" 
+        name="state" 
+        placeholder="Enter your state"
+        required #state="ngModel">
+      </div>
+      <div [hidden]="!state.invalid" class="alert alert-danger">State is required</div>
+      <div class="form-group">
+        <label for="postalcode">Postal Code</label>
+        <input type="text" [(ngModel)]="address.postalCode" 
+        class="form-control" 
+        id="postalcode" 
+        name="postalcode" 
+        placeholder="Enter your postal code"
+        required #postalCode="ngModel">
+      </div>
+      <div [hidden]="!postalCode.invalid" class="alert alert-danger">Postal Code is required</div>
+      <button type="submit" [disabled]="!addressForm.form.valid" 
+      class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

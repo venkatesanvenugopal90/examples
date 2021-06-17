@@ -1,0 +1,39 @@
+<div class="card my-5">
+  <div class="card-body">    
+    <h5 class="card-title">Persons</h5>
+    <label class="card-title">Total : {{total}}</label>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>        
+        <tr *ngFor="let person of persons">
+          <td>{{ person.id }}</td>
+          <td>{{ person.firstName }}</td>
+          <td>{{ person.lastName }}</td>
+          <td>
+            <ul class="text-center list-inline">
+              <li class="list-inline-item">
+                <a (click)="edit(person);" routerLink="/editperson">Edit</a>
+              </li>
+              <li class="list-inline-item">
+                <a (click)="delete(person);" routerLink="/persons">Delete</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+      <label *ngIf="persons.length == 0">No person added to the system</label>
+    </table>
+    <ul class="text-right list-inline">
+      <li class="list-inline-item">
+        <a routerLink="/addperson" class="btn btn-info">Add Person</a>
+      </li>
+    </ul>
+  </div>
+</div>

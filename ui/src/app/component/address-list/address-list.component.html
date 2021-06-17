@@ -1,0 +1,43 @@
+<div class="card my-5">
+  <div class="card-body">
+    <h5 class="card-title">Addresses</h5>
+    <label class="card-title">Total : {{total}}</label>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Street</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Postal Code</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of addresses">
+          <td>{{ address.id }}</td>
+          <td>{{ address.street }}</td>
+          <td>{{ address.city }}</td>
+          <td>{{ address.state }}</td>
+          <td>{{ address.postalCode }}</td>
+          <td>
+            <ul class="text-center list-inline">
+              <li class="list-inline-item">
+                <a (click)="edit(address);" routerLink="/editaddress">Edit</a>
+              </li>
+              <li class="list-inline-item">
+                <a (click)="delete(address);" routerLink="/addresses">Delete</a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+      <label *ngIf="addresses.length == 0">No address added to the system</label>
+    </table>
+    <ul class="text-right list-inline">
+      <li class="list-inline-item">
+        <a routerLink="/addaddress" class="btn btn-info">Add Address</a>
+      </li>
+    </ul>
+  </div>
+</div>

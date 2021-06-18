@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from './../../service/person-service.service';
 import { AddressService } from './../../service/address-service.service';
+import { DataService } from './../../service/data-service.service';
 import { Person } from './../../model/person';
 import { Address } from './../../model/address';
 
@@ -20,17 +21,13 @@ export class PersonFormComponent {
     private route: ActivatedRoute, 
     private router: Router, 
     private personService: PersonService,
-    private addressService: AddressService) {
+    private addressService: AddressService,
+    private dataService: DataService) {
     this.addressService.findAll().subscribe(data => {
       this.addresses = data;
     });
-    this.person = this.personService.getPerson();
-    if (this.person.id == undefined) {
-      this.title = "New Person" ;
-      this.person = new Person();
-    } else {
-      this.title = "Edit Person";
-    }
+    this.person = this.dataService.getPerson();
+    this.title = this.person.id ? "Edit Person" : "New Person";
   }
 
   onSubmit() {
@@ -42,7 +39,7 @@ export class PersonFormComponent {
   }
 
   ngOnDestroy() {
-    this.personService.setPerson(new Person());
+    this.dataService.resetData();
   }
 
   compareAddressId(address1, address2) {

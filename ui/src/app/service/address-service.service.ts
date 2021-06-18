@@ -8,19 +8,8 @@ export class AddressService {
 
   private addressUrl: string;
 
-  private address: Address;
-
   constructor(private http: HttpClient) {
     this.addressUrl = 'http://localhost:8081/backend/rest/address';
-    this.address = new Address();
-  }
-
-  public getAddress(): Address {
-    return this.address;
-  }
-
-  public setAddress(address: Address) {
-    this.address = address;
   }
 
   public findAll(): Observable<Address[]> {

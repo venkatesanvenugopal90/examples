@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressService } from './../../service/address-service.service';
+import { DataService } from './../../service/data-service.service';
 import { Address } from './../../model/address';
 
 @Component({
@@ -16,14 +17,10 @@ export class AddressFormComponent {
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private addressService: AddressService) {
-    this.address = this.addressService.getAddress();
-    if (this.address.id == undefined) {
-      this.title = "New Address" ;
-      this.address = new Address();
-    } else {
-      this.title = "Edit Address";
-    }
+    private addressService: AddressService,
+    private dataService: DataService) {
+    this.address = this.dataService.getAddress();
+    this.title = this.address.id ? "Edit Address" : "New Address";
   }
 
   onSubmit() {
@@ -35,6 +32,6 @@ export class AddressFormComponent {
   }
 
   ngOnDestroy() {
-    this.addressService.setAddress(new Address());
+    this.dataService.resetData();
   }
 }

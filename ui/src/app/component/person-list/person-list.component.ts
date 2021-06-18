@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from './../../model/person';
 import { PersonService } from './../../service/person-service.service';
+import { DataService } from './../../service/data-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,7 +17,8 @@ export class PersonListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private personService: PersonService) {
+    private personService: PersonService,
+    private dataService: DataService) {
     this.persons = [];
     this.total = "0";
   }
@@ -31,7 +33,7 @@ export class PersonListComponent implements OnInit {
   }
 
   edit(person) {
-    this.personService.setPerson(person);
+    this.dataService.setPerson(person);
   }
 
   delete(person) {

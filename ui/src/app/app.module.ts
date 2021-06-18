@@ -10,6 +10,7 @@ import { AddressListComponent } from './component/address-list/address-list.comp
 import { AddressFormComponent } from './component/address-form/address-form.component';
 import { PersonService } from './service/person-service.service';
 import { AddressService } from './service/address-service.service';
+import { DataService } from './service/data-service.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AddressService } from './service/address-service.service';
   HttpClientModule,
   FormsModule
   ],
-  providers: [PersonService, AddressService],
+  providers: [PersonService, AddressService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

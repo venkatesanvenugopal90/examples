@@ -8,19 +8,8 @@ export class PersonService {
 
   private personUrl: string;
 
-  private person: Person;
-
   constructor(private http: HttpClient) {
     this.personUrl = 'http://localhost:8081/backend/rest/person';
-    this.person = new Person();
-  }
-
-  public getPerson(): Person {
-    return this.person;
-  }
-
-  public setPerson(person: Person) {
-    this.person = person;
   }
 
   public findAll(): Observable<Person[]> {

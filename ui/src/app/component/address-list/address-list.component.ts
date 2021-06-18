@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Address } from './../../model/address';
 import { AddressService } from './../../service/address-service.service';
+import { DataService } from './../../service/data-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,7 +17,8 @@ export class AddressListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private addressService: AddressService) {
+    private addressService: AddressService,
+    private dataService: DataService) {
     this.addresses = [];
     this.total = "0";
   }
@@ -31,7 +33,7 @@ export class AddressListComponent implements OnInit {
   }
 
   edit(address) {
-    this.addressService.setAddress(address);
+    this.dataService.setAddress(address);
   }
 
   delete(address) {

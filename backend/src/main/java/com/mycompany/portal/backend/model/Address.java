@@ -28,7 +28,7 @@ public class Address implements java.io.Serializable {
 	@Column(name = "state", nullable = false, length = 20)
 	private String state;
 
-	@Column(name = "postalcode", nullable = false)
+	@Column(name = "postalcode", nullable = false, length = 20)
 	private String postalCode;
 
 	public Long getId() {
@@ -64,11 +64,11 @@ public class Address implements java.io.Serializable {
 	}
 
 	public String getPostalCode() {
-		return this.postalCode;
+		return this.postalCode.toUpperCase();
 	}
 
 	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+		this.postalCode = postalCode.toUpperCase();
 	}
 
 	@Override

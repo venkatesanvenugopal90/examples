@@ -9,6 +9,7 @@
         id="street" 
         name="street" 
         placeholder="Enter your street"
+        maxlength="20" 
         required #street="ngModel">
       </div>
       <div [hidden]="!street.invalid" class="alert alert-danger">Street is required</div>
@@ -19,6 +20,7 @@
         id="city" 
         name="city" 
         placeholder="Enter your city"
+        maxlength="20" 
         required #city="ngModel">
       </div>
       <div [hidden]="!city.invalid" class="alert alert-danger">City is required</div>
@@ -29,6 +31,7 @@
         id="state" 
         name="state" 
         placeholder="Enter your state"
+        maxlength="20" 
         required #state="ngModel">
       </div>
       <div [hidden]="!state.invalid" class="alert alert-danger">State is required</div>
@@ -39,11 +42,21 @@
         id="postalcode" 
         name="postalcode" 
         placeholder="Enter your postal code"
+        maxlength="20" 
         required #postalCode="ngModel">
       </div>
       <div [hidden]="!postalCode.invalid" class="alert alert-danger">Postal Code is required</div>
-      <button type="submit" [disabled]="!addressForm.form.valid" 
-      class="btn btn-info">Submit</button>
+      <ul class="text-center list-inline py-3">
+        <li class="list-inline-item">
+          <button type="submit" [disabled]="!addressForm.form.valid" class="btn btn-info">Submit</button>
+        </li>
+        <li class="list-inline-item">
+          <a (click)="addressForm.resetForm();" class="btn btn-info">Clear</a>
+        </li>
+        <li class="list-inline-item">
+          <a routerLink="/addresses" class="btn btn-info">Cancel</a>
+        </li>
+      </ul>
     </form>
   </div>
 </div>

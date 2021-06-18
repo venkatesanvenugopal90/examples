@@ -9,6 +9,7 @@
         id="firstname" 
         name="firstname" 
         placeholder="Enter your first name"
+        maxlength="20" 
         required #firstname="ngModel">
       </div>
       <div [hidden]="!firstname.invalid" class="alert alert-danger">First Name is required</div>
@@ -19,6 +20,7 @@
         id="lastname" 
         name="lastname" 
         placeholder="Enter your last name"
+        maxlength="20" 
         required #lastname="ngModel">
         <div [hidden]="!lastname.invalid" class="alert alert-danger">Last Name is required</div>
       </div>
@@ -29,8 +31,17 @@
           <option *ngFor="let address of addresses" [ngValue]="address">{{address.street}} {{address.city}} {{address.state}} {{address.postalCode}}</option>
         </select>
       </div>
-      <button type="submit" [disabled]="!personForm.form.valid" 
-      class="btn btn-info">Submit</button>
+      <ul class="text-center list-inline py-3">
+        <li class="list-inline-item">
+          <button type="submit" [disabled]="!personForm.form.valid" class="btn btn-info">Submit</button>
+        </li>
+        <li class="list-inline-item">
+          <a (click)="personForm.resetForm();" class="btn btn-info">Clear</a>
+        </li>
+        <li class="list-inline-item">
+          <a routerLink="/persons" class="btn btn-info">Cancel</a>
+        </li>
+      </ul>
     </form>
   </div>
 </div>

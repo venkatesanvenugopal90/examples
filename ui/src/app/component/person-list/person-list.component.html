@@ -1,3 +1,4 @@
+<div *ngFor="let message of messages" class="alert alert-warning">{{ message }}</div>
 <div class="card my-5">
   <div class="card-body">    
     <h5 class="card-title">Persons</h5>
@@ -28,7 +29,7 @@
           </td>
         </tr>
       </tbody>
-      <label *ngIf="persons.length == 0">No person added to the system</label>
+      <label *ngIf="!persons">{{loading}}</label>
     </table>
     <ul class="text-right list-inline">
       <li class="list-inline-item">

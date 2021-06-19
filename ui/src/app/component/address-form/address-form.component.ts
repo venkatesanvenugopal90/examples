@@ -13,18 +13,26 @@ export class AddressFormComponent {
 
   address: Address;
   title: string;
+  messages: any[];
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
     private addressService: AddressService,
     private dataService: DataService) {
+    this.messages = [];
     this.address = this.dataService.getAddress();
     this.title = this.address.id ? "Edit Address" : "New Address";
   }
 
   onSubmit() {
-    this.addressService.save(this.address).subscribe(result => this.gotoAddressList());
+    this.addressService.save(this.address).subscribe(
+    (data) => {
+      this.gotoAddressList();
+    },
+    (error) => {
+      this.messages.push(error);
+    });
   }
 
   gotoAddressList() {

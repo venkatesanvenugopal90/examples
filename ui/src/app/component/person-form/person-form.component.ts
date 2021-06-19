@@ -16,6 +16,7 @@ export class PersonFormComponent {
   person: Person;
   title: string;
   addresses: Address[];
+  messages: any[];
 
   constructor(
     private route: ActivatedRoute, 
@@ -23,6 +24,7 @@ export class PersonFormComponent {
     private personService: PersonService,
     private addressService: AddressService,
     private dataService: DataService) {
+    this.messages = [];
     this.addressService.findAll().subscribe(data => {
       this.addresses = data;
     });
@@ -31,7 +33,13 @@ export class PersonFormComponent {
   }
 
   onSubmit() {
-    this.personService.save(this.person).subscribe(result => this.gotoPersonList());
+    this.personService.save(this.person).subscribe(
+      (data) => {
+        this.gotoPersonList();
+      },
+      (error) => {
+        this.messages.push(error);
+      });
   }
 
   gotoPersonList() {

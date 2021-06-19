@@ -13,23 +13,44 @@ export class AddressListComponent implements OnInit {
 
   addresses: Address[];
   total: string;
+  loading: string;
+  messages: any[];
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
     private addressService: AddressService,
     private dataService: DataService) {
-    this.addresses = [];
-    this.total = "0";
+    this.messages = [];
+    this.total = "Loading...";
+    this.loading = "Loading...";
   }
 
   ngOnInit() {
-    this.addressService.findAll().subscribe(data => {
-      this.addresses = data;
-    });
-    this.addressService.count().subscribe(data => {
-      this.total = data;
-    });
+    this.getAddresses();
+    this.getTotal();
+  }
+
+  getTotal() {
+    this.addressService.count().subscribe(
+      (data) => {
+        this.total = data;
+      },
+      (error) => {
+        this.messages.push(error);
+        this.total = "Unable to get data";
+      });
+  }
+
+  getAddresses() {
+    this.addressService.findAll().subscribe(
+      (data) => {
+        this.addresses = data;
+      },
+      (error) => {
+        this.messages.push(error);
+        this.loading = "Unable to get data";
+      });
   }
 
   edit(address) {
@@ -37,11 +58,13 @@ export class AddressListComponent implements OnInit {
   }
 
   delete(address) {
-    this.addressService.delete(address).subscribe(data => {
-      this.addresses = data;
-      this.addressService.count().subscribe(data => {
-        this.total = data;
+    this.addressService.delete(address).subscribe(
+      (data) => {
+        this.getTotal();
+        this.addresses = data;
+      },
+      (error) => {
+        this.messages.push(error);
       });
-    });
   }
 }

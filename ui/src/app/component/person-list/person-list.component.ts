@@ -13,23 +13,44 @@ export class PersonListComponent implements OnInit {
 
   persons: Person[];
   total: string;
+  loading: string;
+  messages: any[];
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
     private personService: PersonService,
     private dataService: DataService) {
-    this.persons = [];
-    this.total = "0";
+    this.messages = [];
+    this.total = "Loading...";
+    this.loading = "Loading...";
   }
 
   ngOnInit() {
-    this.personService.findAll().subscribe(data => {
-      this.persons = data;
-    });
-    this.personService.count().subscribe(data => {
-      this.total = data;
-    });
+    this.getPersons();
+    this.getTotal();
+  }
+
+  getTotal() {
+    this.personService.count().subscribe(
+      (data) => {
+        this.total = data;
+      },
+      (error) => {
+        this.messages.push(error);
+        this.total = "Unable to get data";
+      });
+  }
+
+  getPersons() {
+    this.personService.findAll().subscribe(
+      (data) => {
+        this.persons = data;
+      },
+      (error) => {
+        this.messages.push(error);
+        this.loading = "Unable to get data";
+      });
   }
 
   edit(person) {
@@ -37,11 +58,13 @@ export class PersonListComponent implements OnInit {
   }
 
   delete(person) {
-    this.personService.delete(person).subscribe(data => {
-      this.persons = data;
-      this.personService.count().subscribe(data => {
-        this.total = data;
+    this.personService.delete(person).subscribe(
+      (data) => {
+        this.getTotal();
+        this.persons = data;
+      },
+      (error) => {
+        this.messages.push(error);
       });
-    });
   }
 }

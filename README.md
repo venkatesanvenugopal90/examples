@@ -56,10 +56,8 @@ Note: This would start the UI application and leave this prompt as it is. This w
 
 ## Notes/TODO
 1. Unit/Integration tests are not written for both ui & backend code
-2. Exception handling is not in place for both ui & backend code
-3. Advanced validations not in place for both ui and backend code
-4. User friendly messages or popup on UI not in place
-5. Java/UI documentations not in place
-6. Need to document production way of deploying the application
-7. Add person/address by uploading XML/JSON not in place
+2. User friendly messages or popup on UI not in place for successful operations
+3. Java/UI documentations not in place
+4. Need to document production way of deploying the application
+5. Add person/address by uploading XML/JSON not in place
 

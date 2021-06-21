@@ -108,7 +108,6 @@ public class Address implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", postalCode="
-				+ postalCode + "]";
+		return "Address [street=" + street + ", city=" + city + ", state=" + state + ", postalCode=" + postalCode + "]";
 	}
 }

@@ -88,7 +88,6 @@ public class Person implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ "]";
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + "]";
 	}
 }
